@@ -50,6 +50,9 @@ def main() -> int:
     if any(ch.isspace() for ch in word):
         print("error: entry must be exactly one word", file=sys.stderr)
         return 1
+    if not word.isalpha():
+        print("error: word must be letters only", file=sys.stderr)
+        return 1
     word.encode("utf-8")  # raises if not valid UTF-8-encodable text
 
     output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
